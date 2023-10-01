@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import { createUserDocumentFromAuth, onAuthStateChangedListener } from '../utils/firebase/firebase.utils';
+import { auth, createUserDocumentFromAuth, onAuthStateChangedListener } from '../utils/firebase/firebase.utils';
 
 // as the actual value you want to access
 export const UserContext = createContext({
@@ -13,7 +13,7 @@ export const UserProvider = ({children}) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChangedListener(async (user) => {
-            console.log(user);
+    
             if(user) {
                 await createUserDocumentFromAuth(user);
             }
