@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore';
+import SHOP_DATA from "../../shop-data";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -99,5 +100,14 @@ export const getCategoriesAndDocuments = async () => {
         return acc;
     }, {});
 
+    return categoryMap;
+}
+
+export const getCategoriesAndDocumentsFromShopData = () => {
+    const categoryMap = SHOP_DATA.reduce((acc, documentSnapshot) => {
+        const {title, items} = documentSnapshot;
+        acc[title.toLowerCase()] = items;
+        return acc;
+    }, {});
     return categoryMap;
 }
