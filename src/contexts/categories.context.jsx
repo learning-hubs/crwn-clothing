@@ -14,11 +14,10 @@ export const CategoriesProvider = ({children}) => {
         const getCategoriesMap = async () => {
             // const categoryMap = await getCategoriesAndDocuments();
             const categoryMap = getCategoriesAndDocumentsFromShopData();
-            console.log(categoryMap);
             setCategoriesMap(categoryMap);
         }
         getCategoriesMap();
-    })
+    }, [])
 
     // useEffect(() => {
     //     addCollectionAndDocuments('categories', SHOP_DATA);
