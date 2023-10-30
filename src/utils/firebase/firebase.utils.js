@@ -46,11 +46,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
 
     const userDocRef = await doc(db, 'users', userAuth.uid);
 
-    console.log(userDocRef);
-
     const userSnapshot = await getDoc(userDocRef);
-    console.log(userSnapshot);
-    console.log(userSnapshot.exists());
 
     if(!userSnapshot.exists()) {
         const {displayName, email} = userAuth;
@@ -94,13 +90,13 @@ export const getCategoriesAndDocuments = async () => {
 
     const querySnapshot = await getDocs(q);
 
-    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-        const { title, items } = docSnapshot.data();
-        acc[title.toLowerCase()] = items;
-        return acc;
-    }, {});
+    // .reduce((acc, docSnapshot) => {
+    //     const { title, items } = docSnapshot.data();
+    //     acc[title.toLowerCase()] = items;
+    //     return acc;
+    // }, {});
 
-    return categoryMap;
+    return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
 }
 
 export const getCategoriesAndDocumentsFromShopData = () => {
