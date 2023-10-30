@@ -2,12 +2,15 @@ import { Fragment, useContext } from 'react';
 import ProductCard from '../product-card/product-card.component';
 import { CategoriesContext } from '../../contexts/categories.context';
 import CategoryPreview from '../category-preview/category-preview.component';
-import SHOP_DATA from '../../shop-data';
-import { getCategoriesAndDocumentsFromShopData } from '../../utils/firebase/firebase.utils';
+import { selectCategoriesMap } from '../../store/categories/category.selector';
+import { useSelector } from 'react-redux';
 
 const CategoriesPreview = () => {
+    const categoriesMap = useSelector(selectCategoriesMap);
+    
     // const {categoriesMap} = useContext(CategoriesContext);
-    const categoriesMap = getCategoriesAndDocumentsFromShopData();
+    // method for calling from file/ hardcoded data
+    // const categoriesMap = getCategoriesAndDocumentsFromShopData();
     
     return (
         <Fragment>
