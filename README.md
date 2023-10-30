@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### `redux-persist` allows us to persist our reducer values
+
+### `redux-thunk` is one flavour of asynchronous side effects inside of Redux.
+
+It means that we allow our application to fire actions and those actions need not have to flow through the redux diagram in a synchronous manner. Instead we get redux bindings which means we can read from the store, dispatch new actions in the middleware section of Redux flow. 
+
+Redux Thunk is a middleware and it allows us to receive actions in the form of functions. So now we have some asynchronous action , so instead of dispatching an action in typical format with type and payload, instead we pass a function. The function goes to Redux Thunk and Redux Thunk takes this function and it passes into it a dispatch, this dispatch is the same dispatch that we have used in redux until this point. So we can dispatch new actions right inside of redux thunk. This new action will move back into the flow and it might hit another thunk or it might continue onto the redux store and further reducers. Through thunks we can abstract out the logic into Thunks themselves.
+
+
+
